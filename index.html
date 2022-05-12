@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Number Game</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<!-- Rounded switch -->
+<label class="switch">
+  	<input type="checkbox">
+  	<span class="slider round"></span>
+</label>
+
+<div class="Container0">
+	<div id="target">
+		Target: <var id="targetVar">0</var>
+	</div>
+	<div id="countdown">
+		<var id="countdownVar">20</var> s
+	</div>
+</div>
+
+<div class="Container1">
+	<button class="NumTile" id="NT1">1</button>
+	<button class="NumTile" id="NT2">2</button>
+	<button class="NumTile" id="NT3">3</button>
+	<button class="NumTile" id="NT4">4</button>
+</div>
+
+<div class="Container2">
+	<button class="OpTile" id="OT1">+</button>
+	<button class="OpTile" id="OT2">-</button>
+	<button class="OpTile" id="OT3">*</button>
+	<button class="OpTile" id="OT4">/</button>
+</div>
+
+<div class="Container3">
+	<div class="formulaTileP">(</div>
+	<div class="formulaTile" id="num1"></div>
+	<div class="formulaTileOP" id="op1"></div>
+	<div class="formulaTile" id="num2"></div>
+	<div class="formulaTileP">)</div>
+	<div class="formulaTileOP" id="op2"></div>
+	<div class="formulaTileP">(</div>
+	<div class="formulaTile" id="num3"></div>
+	<div class="formulaTileOP" id="op3"></div>
+	<div class="formulaTile" id="num4"></div>
+	<div class="formulaTileP">)</div>
+</div>
+
+<div class="UtilPanel">
+	<button class="UtilBtn" id="BackBtn">Back</button>
+	<button class="UtilBtn" id="EnterBtn">Enter</button>
+</div>
+
+
+<script src="NumberGame.js"></script>
+
+</body>
+</html>
