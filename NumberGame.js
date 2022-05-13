@@ -32,7 +32,8 @@ const lst_ran_index = getRandomInt(1,lst.length+1);
 // const choice1 = lst[lst_ran_index-1];
 // const choice2 = targetResult/choice1;
 const [choice1,choice2] = perform_rand_op(targetResult,getRandomInt(0,4),0);
-
+console.log(choice1);
+console.log(choice2);
 if (choice1 > choice2) {
     var arr1 = perform_rand_op(choice1,getRandomInt(0,4));
     var arr2 = perform_rand_op(choice2,getRandomInt(0,3));
