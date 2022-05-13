@@ -11,7 +11,8 @@ let formulaOpTiles = document.querySelectorAll(".formulaTileOP");
 let backBtn = document.querySelector("#BackBtn");
 let enterBtn = document.querySelector("#EnterBtn");
 var interval = null;
-let targetResult = getRandomInt(101,1000);
+let targetResult = getRandomInt(20,120);
+let finalContainer = document.querySelector(".FinalScore");
 
 countdown.innerHTML = 60;
 
@@ -21,7 +22,7 @@ interval = setInterval(decrementTimer,1000);
 
 let lst = print_factors(targetResult,[])
 while (lst.length === 2) {
-	targetResult = getRandomInt(101,1000);
+	targetResult = getRandomInt(20,120);
 	lst = print_factors(targetResult,[])
 }
 
@@ -30,7 +31,7 @@ target.innerHTML = targetResult;
 const lst_ran_index = getRandomInt(1,lst.length+1);
 // const choice1 = lst[lst_ran_index-1];
 // const choice2 = targetResult/choice1;
-const [choice1,choice2] = perform_rand_op(targetResult,getRandomInt(0,4),5);
+const [choice1,choice2] = perform_rand_op(targetResult,getRandomInt(0,4),0);
 
 if (choice1 > choice2) {
     var arr1 = perform_rand_op(choice1,getRandomInt(0,4));
@@ -56,6 +57,7 @@ for (let i = 0; i < 4; i++) {
 	});
 	opTiles[i].addEventListener("click", function() {
 		formulaOpTiles[opInputs].innerHTML = opTiles[i].innerHTML;
+		formulaOpTiles[opInputs].style.border = "none";
 		opInputs++;
 		controlOpTiles(0);
 	});
@@ -66,6 +68,8 @@ backBtn.addEventListener("click", function() {
 		if (enabledButtonType==="Num") {
 			opInputs--;
 			formulaOpTiles[opInputs].innerHTML = "";
+			formulaOpTiles[opInputs].style.border = "solid";
+			formulaOpTiles[opInputs].style.border = "solid 2px";
 			controlOpTiles(1);
 		} else {
 			numInputs--;
@@ -79,11 +83,12 @@ enterBtn.addEventListener("click", function() {
 	if ( numInputs ==4 ) {
 		let result1 = performOp(formulaNumTiles[0].innerHTML,formulaNumTiles[1].innerHTML,formulaOpTiles[0].innerHTML);
 		let result2 = performOp(formulaNumTiles[2].innerHTML,formulaNumTiles[3].innerHTML,formulaOpTiles[2].innerHTML);
-		let finalResult = result1 * result2;
+		let finalResult = performOp(result1,result2,formulaOpTiles[1].innerHTML);
 		if (finalResult != targetResult) {
-			console.log("Lose");
+			finalContainer.innerHTML = "Nope, Keep Trying"
 		} else {
-			console.log("Win");
+			finalContainer.innerHTML = "You got it!"
+			disableTimer();
 		}
 	}	
 });
@@ -110,6 +115,15 @@ function controlOpTiles(enable) {
 	}
 };
 
+function disableAllTiles() {
+	for (let i=0;i<4;i++) {
+		opTiles[i].disabled = true;
+		numTiles[i].disabled = true;
+		numTiles[i].style.opacity = "0.4"
+		opTiles[i].style.opacity = "0.4"
+	}
+}
+
 function disableTimer() {
 	clearInterval(interval);
 };
@@ -118,6 +132,7 @@ function decrementTimer() {
 	const x = countdown.innerHTML;
 	countdown.innerHTML = x-1;
 	if (countdown.innerHTML == 0) {
+		finalContainer.innerHTML = "Time's Up!"
 		disableTimer()
 	}
 };
