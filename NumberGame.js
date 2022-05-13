@@ -133,6 +133,7 @@ function decrementTimer() {
 	countdown.innerHTML = x-1;
 	if (countdown.innerHTML == 0) {
 		finalContainer.innerHTML = "Time's Up!"
+		disableAllTiles()
 		disableTimer()
 	}
 };
