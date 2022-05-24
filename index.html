@@ -7,60 +7,79 @@
 </head>
 <body>
 
+<div class="Play">
+	<button class="PlayButton">Play</button>
+</div>
 
 <!-- Rounded switch -
 <label class="switch">
   	<input type="checkbox">
   	<span class="slider round"></span>
 </label> -->
-
-<div class="titleContainer">
-	Formula
-</div>
-
-<div class="Container0">
-	<div id="target">
-		Target: <var id="targetVar">0</var>
+<div class="GameContainer">
+	<div class="titleContainer">
+		Formula
 	</div>
-	<div id="countdown">
-		<var id="countdownVar">20</var> s
+
+	<div class="Container0">
+		<div id="target">
+			Target: <var id="targetVar"></var>
+		</div>
+		<div id="timer">
+			<var id="timerVar">00:00</var>
+		</div>
+	</div>
+
+	<div class="Container1">
+		<button class="NumTile" id="NT1"></button>
+		<button class="NumTile" id="NT2"></button>
+		<button class="NumTile" id="NT3"></button>
+		<button class="NumTile" id="NT4"></button>
+	</div>
+
+	<div class="Container2">
+		<button class="OpTile" id="OT1">+</button>
+		<button class="OpTile" id="OT2">-</button>
+		<button class="OpTile" id="OT3">*</button>
+		<button class="OpTile" id="OT4">/</button>
+	</div>
+
+	<div class="Container3">
+		<div class="formulaTileP">(</div>
+		<div class="formulaTile" id="num1"></div>
+		<div class="formulaTileOP" id="op1"></div>
+		<div class="formulaTile" id="num2"></div>
+		<div class="formulaTileP">)</div>
+		<div class="formulaTileOP" id="op2"></div>
+		<div class="formulaTileP">(</div>
+		<div class="formulaTile" id="num3"></div>
+		<div class="formulaTileOP" id="op3"></div>
+		<div class="formulaTile" id="num4"></div>
+		<div class="formulaTileP">)</div>
+	</div>
+
+	<div class="UtilPanel">
+		<button class="UtilBtn" id="BackBtn">Back</button>
+		<button class="UtilBtn" id="EnterBtn">Enter</button>
+	</div>
+
+	<div class="FinalScore"></div>
+</div>
+
+<div class="Popup">
+	<div id="Popup-header">
+		<div id="Popup-title">Stats</div>
+	</div>
+	<div id="Popup-body">
+		<div class="StatLabel">   Number of Games Played: <var id="num_of_games_played"></var></div>
+        <div class="StatLabel">Number of Games Completed: <var id="num_of_games_completed"></var></div>
+        <div class="StatLabel"> Average Time to Complete: <var id="average_time"></var></div>
+        <div class="StatLabel">       Last Game Duration: <var id="last_time_to_finish"></var></div>       
+	</div>
+    <div id="Popup-footer">
+		<button id="Popup-button">Return to Menu</button>
 	</div>
 </div>
-
-<div class="Container1">
-	<button class="NumTile" id="NT1">1</button>
-	<button class="NumTile" id="NT2">2</button>
-	<button class="NumTile" id="NT3">3</button>
-	<button class="NumTile" id="NT4">4</button>
-</div>
-
-<div class="Container2">
-	<button class="OpTile" id="OT1">+</button>
-	<button class="OpTile" id="OT2">-</button>
-	<button class="OpTile" id="OT3">*</button>
-	<button class="OpTile" id="OT4">/</button>
-</div>
-
-<div class="Container3">
-	<div class="formulaTileP">(</div>
-	<div class="formulaTile" id="num1"></div>
-	<div class="formulaTileOP" id="op1"></div>
-	<div class="formulaTile" id="num2"></div>
-	<div class="formulaTileP">)</div>
-	<div class="formulaTileOP" id="op2"></div>
-	<div class="formulaTileP">(</div>
-	<div class="formulaTile" id="num3"></div>
-	<div class="formulaTileOP" id="op3"></div>
-	<div class="formulaTile" id="num4"></div>
-	<div class="formulaTileP">)</div>
-</div>
-
-<div class="UtilPanel">
-	<button class="UtilBtn" id="BackBtn">Back</button>
-	<button class="UtilBtn" id="EnterBtn">Enter</button>
-</div>
-
-<div class="FinalScore"></div>
 
 
 <script src="NumberGame.js"></script>
