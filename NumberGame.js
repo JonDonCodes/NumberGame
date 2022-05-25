@@ -11,7 +11,7 @@ const day             = date.getDate();
 const month           = date.getMonth()+1;
 const year            = date.getFullYear();
 const sDate           = `${month}.${day}${year}`;
-// const sDate = "2.292022"
+// const sDate = "5.272022"
 
 let seed              = parseFloat(sDate)*100000000;
 let target            = document.querySelector("#targetVar");
@@ -32,7 +32,7 @@ let popupButton       = document.querySelector("#Popup-button");
 let game              = document.querySelector(".GameContainer");
 let popup             = document.querySelector(".Popup");
 
-// localStorage.clear();
+localStorage.clear();
 
 popup.style.display = "none";
 
@@ -367,8 +367,8 @@ function timeToString(time) {
 }
 
 function timeStringToSeconds(timeString) {
-	const minutes = timeString.slice(0,2);
-	const seconds = timeString.slice(3,5);
+	const minutes = parseInt(timeString.slice(0,2));
+	const seconds = parseInt(timeString.slice(3,5));
 
 	return minutes * 60 + seconds;
 }
