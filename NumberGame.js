@@ -32,7 +32,7 @@ let popupButton       = document.querySelector("#Popup-button");
 let game              = document.querySelector(".GameContainer");
 let popup             = document.querySelector(".Popup");
 
-localStorage.clear();
+// localStorage.clear();
 
 popup.style.display = "none";
 
