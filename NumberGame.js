@@ -11,7 +11,7 @@ const day             = date.getDate();
 const month           = date.getMonth()+1;
 const year            = date.getFullYear();
 const sDate           = `${month}.${day}${year}`;
-// const sDate = "5.272022"
+// const sDate = "5.252022"
 
 let seed              = parseFloat(sDate)*100000000;
 let target            = document.querySelector("#targetVar");
@@ -49,6 +49,7 @@ if (localStorage.getItem('num_of_games_played') == null) {
 	num_of_games_played    = localStorage.getItem('num_of_games_played');
 	num_of_games_completed = localStorage.getItem('num_of_games_completed');
 	average_time           = localStorage.getItem('average_time');
+	average_time           = timeStringToSeconds(average_time);
 	last_time_to_finish    = localStorage.getItem('last_time_to_finish');
 	lastGameDate           = localStorage.getItem('lastGameDate');
 	lastGameCompleted      = localStorage.getItem('lastGameCompleted');
@@ -95,6 +96,9 @@ playButton.addEventListener("click", function() {
 			popup.style.display = "flex";
 		  game.style.visibility = 'hidden';
 		  playButton.style.display = "none";
+			if (isNaN(average_time)==false) {
+				average_time = secondsToString(Math.floor(average_time));
+			}
 		  populateStats();
 		}
 	}
@@ -186,8 +190,9 @@ function startGame() {
 				localStorage.setItem('lastGameCompleted',1);
 				  
 				let completed_in_seconds = timeStringToSeconds(last_time_to_finish);
+				num_of_games_completed = parseInt(num_of_games_completed);
 				let avg_t = ((average_time*num_of_games_completed)+completed_in_seconds)/(num_of_games_completed+1);
-				average_time = secondsToString(avg_t);
+				average_time = secondsToString(Math.floor(avg_t));
 				num_of_games_completed++;
 				localStorage.setItem('num_of_games_completed',num_of_games_completed);
 				localStorage.setItem('average_time',average_time);
