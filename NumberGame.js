@@ -1,5 +1,5 @@
 // startGame()
-let num_of_games_played;
+let num_of_games_played = null;
 let num_of_games_completed;
 let average_time;
 let last_time_to_finish;
@@ -11,7 +11,7 @@ const day             = date.getDate();
 const month           = date.getMonth()+1;
 const year            = date.getFullYear();
 const sDate           = `${month}.${day}${year}`;
-// const sDate = "5.132022"
+// const sDate = "5.122022"
 
 let seed              = parseFloat(sDate)*100000000;
 let target            = document.querySelector("#targetVar");
@@ -32,10 +32,10 @@ let playButton        = document.querySelector(".PlayButton");
 let popupButton       = document.querySelector("#Popup-button");
 let game              = document.querySelector(".GameContainer");
 let popup             = document.querySelector(".Popup");
-let clear_stats_pop   =document.querySelector("#Popup-clear");
+let clear_stats_pop   = document.querySelector("#Popup-clear");
 
 // Debug set to 1; Release set to 0
-// let verbose           = 1
+let verbose           = 0;
 
 // localStorage.clear();
 
@@ -44,8 +44,10 @@ popup.style.display = "none";
 // Make sure modifiers are different
 targetResult = targetResult % 365;
 
+console.log('hi');
+
 // Local Storage
-if (localStorage.getItem('num_of_games_played') == null) {
+if (localStorage.getItem('num_of_games_played') == null || localStorage.getItem('num_of_games_played') === 0) {
 	populateStorage();
 } else {
 	num_of_games_played    = localStorage.getItem('num_of_games_played');
@@ -233,13 +235,13 @@ function startGame() {
 	})
 
 	clear_stats_pop.addEventListener("click", function() {
-		localStorage.clear();
-		localStorage.setItem('num_of_games_played',0);
-		localStorage.setItem('num_of_games_completed',0);
-		localStorage.setItem('average_time',0);
-		localStorage.setItem('last_time_to_finish',0);
-		localStorage.setItem('lastGameDate',0);
-		localStorage.setItem('lastGameCompleted',0);
+		// localStorage.clear();
+		localStorage.setItem('num_of_games_played',1);
+		localStorage.setItem('num_of_games_completed',1);
+		localStorage.setItem('average_time',last_time_to_finish);
+		localStorage.setItem('last_time_to_finish',last_time_to_finish);
+		localStorage.setItem('lastGameDate',sDate);
+		localStorage.setItem('lastGameCompleted',1);
 	});
 
 	// Game Functions
