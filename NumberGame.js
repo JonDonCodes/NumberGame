@@ -242,6 +242,11 @@ function startGame() {
 		localStorage.setItem('last_time_to_finish',last_time_to_finish);
 		localStorage.setItem('lastGameDate',sDate);
 		localStorage.setItem('lastGameCompleted',1);
+
+	  document.querySelector("#num_of_games_played").innerHTML    = 1;
+		document.querySelector("#num_of_games_completed").innerHTML = 1;
+		document.querySelector("#average_time").innerHTML           = last_time_to_finish;
+	  document.querySelector("#last_time_to_finish").innerHTML    = last_time_to_finish;
 	});
 
 	// Game Functions
