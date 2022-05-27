@@ -11,7 +11,7 @@ const day             = date.getDate();
 const month           = date.getMonth()+1;
 const year            = date.getFullYear();
 const sDate           = `${month}.${day}${year}`;
-// const sDate = "5.252022"
+// const sDate = "5.132022"
 
 let seed              = parseFloat(sDate)*100000000;
 let target            = document.querySelector("#targetVar");
@@ -25,22 +25,24 @@ let formulaNumTiles   = document.querySelectorAll(".formulaTile");
 let formulaOpTiles    = document.querySelectorAll(".formulaTileOP");
 let backBtn           = document.querySelector("#BackBtn");
 let enterBtn          = document.querySelector("#EnterBtn");
+let yourResult        = document.querySelector(".YourResult");
 let targetResult      = getPseudoRandomInt(seed,20,2000);
 let finalContainer    = document.querySelector(".FinalScore");
 let playButton        = document.querySelector(".PlayButton");
 let popupButton       = document.querySelector("#Popup-button");
 let game              = document.querySelector(".GameContainer");
 let popup             = document.querySelector(".Popup");
+let clear_stats_pop   =document.querySelector("#Popup-clear");
 
-// localStorage.clear();
+// Debug set to 1; Release set to 0
+let verbose           = 1
+
+localStorage.clear();
 
 popup.style.display = "none";
 
-if (targetResult > 1500) {
-	targetResult = targetResult - 600;
-} else if (targetResult > 1000) {
-	targetResult = targetResult - 500;
-} 
+// Make sure modifiers are different
+targetResult = targetResult % 365;
 
 // Local Storage
 if (localStorage.getItem('num_of_games_played') == null) {
@@ -130,14 +132,20 @@ function startGame() {
 		timer.innerHTML = timeToString(elapsedTime);
 	}, 1000)
 
-	const [choice1,choice2] = perform_rand_op(targetResult,getPseudoRandomOp(seed),0);
-	if (choice1 > choice2) {
-	    var arr1 = perform_rand_op(choice1,getPseudoRandomInt(seed,0,4));
-	    var arr2 = perform_rand_op(choice2,getPseudoRandomOp(seed));
-	} else {
-	    var arr1 = perform_rand_op(choice1,getPseudoRandomOp(seed));
-	    var arr2 = perform_rand_op(choice2,getPseudoRandomInt(seed,0,4));
-	}
+	const [choice1,choice2] = perform_rand_op(targetResult,getPseudoRandomOp(seed),7);
+
+	let random_op1 = getPseudoRandomInt(seed,17,346) % 4;
+	let random_op2 = (random_op1+1) % 4;
+
+  if (verbose === 1) {
+  	console.log("choice1: "+choice1);
+		console.log("choice2: "+choice2);
+  	console.log("RANDOM_OP1: " + random_op1);
+		console.log("RANDOM_OP2: " + random_op2);
+  }
+
+	var arr1 = perform_rand_op(choice1,random_op1,53);
+  var arr2 = perform_rand_op(choice2,random_op2,17);
 
 	choices = arr1.concat(arr2);
 	choices = shuffle(choices);
@@ -152,6 +160,17 @@ function startGame() {
 			formulaNumTiles[numInputs].innerHTML = numTiles[i].innerHTML;
 			numInputs++;
 			controlOpTiles(1);
+
+			if (numInputs===2) {
+				let result1 = performOp(formulaNumTiles[0].innerHTML,formulaNumTiles[1].innerHTML,formulaOpTiles[0].innerHTML);
+			  yourResult.innerHTML = result1;
+			} else if (numInputs===4) {
+				let result1 = performOp(formulaNumTiles[0].innerHTML,formulaNumTiles[1].innerHTML,formulaOpTiles[0].innerHTML);
+        let result2 = performOp(formulaNumTiles[2].innerHTML,formulaNumTiles[3].innerHTML,formulaOpTiles[2].innerHTML);
+			  let finalResult = performOp(result1,result2,formulaOpTiles[1].innerHTML);
+			  yourResult.innerHTML = finalResult;
+			};
+
 		});
 		opTiles[i].addEventListener("click", function() {
 			formulaOpTiles[opInputs].innerHTML = opTiles[i].innerHTML;
@@ -173,6 +192,14 @@ function startGame() {
 				numInputs--;
 				formulaNumTiles[numInputs].innerHTML = "";
 				controlOpTiles(0);
+
+				if (numInputs < 4 && numInputs > 1) {
+					let result1 = performOp(formulaNumTiles[0].innerHTML,formulaNumTiles[1].innerHTML,formulaOpTiles[0].innerHTML);
+				  yourResult.innerHTML = result1;
+				} else if (numInputs < 2) {
+
+				  yourResult.innerHTML = null;
+				};
 			}
 		}
 	});
@@ -203,8 +230,17 @@ function startGame() {
 		    populateStats();
 			}
 		}	
-	});
+	})
 
+	clear_stats_pop.addEventListener("click", function() {
+		localStorage.clear();
+		localStorage.setItem('num_of_games_played',0);
+		localStorage.setItem('num_of_games_completed',0);
+		localStorage.setItem('average_time',0);
+		localStorage.setItem('last_time_to_finish',0);
+		localStorage.setItem('lastGameDate',0);
+		localStorage.setItem('lastGameCompleted',0);
+	});
 
 	// Game Functions
 
@@ -239,7 +275,7 @@ function startGame() {
 	function disableTimer() {
 		clearInterval(interval);
 		last_time_to_finish = timer.innerHTML;
-	};
+	}
 
 	// function decrementTimer() {
 	// 	const x = timer.innerHTML;
@@ -272,7 +308,7 @@ function getRandomInt(min,max) {
 	min = Math.ceil(min);
  	max = Math.floor(max);
  	return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-};
+}
 
 function print_factors(mainNum,lst=[]) {
 	// console.log("The factors of "+mainNum+" are:")
@@ -283,43 +319,54 @@ function print_factors(mainNum,lst=[]) {
 		}
 	}
 	return lst;
-};
+}
 
-function perform_rand_op(num,op,difficulty=0) {
-	let modifier = getModifier(difficulty);
+function perform_rand_op(num,op,mod) {
+	let modifier = getModifier(mod);
 	let result = 0;
 	if (op == 0) {
 		result = num + modifier;
 	} else if (op == 1) {
 		result = num - modifier;
 	} else if (op == 2) {
-		// Modifier can't be too high multiplying #s
-		// so get an easier modifier
-		modifier = getModifier(-1);
 		result = num * modifier;
 	} else if (op == 3) {
 		result = num / modifier;
 		while (Number.isInteger(result)===false) {
-			modifier = modifier + 1;
+			modifier = modifier - 1;
 			result = num / modifier;
 		}
 	}
+	if (verbose === 1) {
+		console.log("Perform Random Op");
+		console.log("Num: "+num);
+		console.log("Op: "+op);
+		console.log("Modifier: " + modifier);
+	}
+
 	return [result,modifier];
 }
 
-function getModifier(difficulty) {
-	if (difficulty === 0) {
-		modifier = getPseudoRandomInt(seed,2,10);
-	} else if (difficulty === 1) {
-		modifier = getPseudoRandomInt(seed,2,20);
-	} else if (difficulty === 2) {
-		modifier = getPseudoRandomInt(seed,9,20);
-	}	else if (difficulty === -1) {
-		modifier = getPseudoRandomOp(seed)+1;
-	} else {
-		modifier = getPseudoRandomInt(seed,2,30);
-	}
-	return modifier;
+// function getModifier(difficulty) {
+// 	if (difficulty === 0) {
+// 		modifier = getPseudoRandomInt(seed,2,10);
+// 	} else if (difficulty === 1) {
+// 		modifier = getPseudoRandomInt(seed,2,20);
+// 	} else if (difficulty === 2) {
+// 		modifier = getPseudoRandomInt(seed,9,20);
+// 		modifier = modifier - 8;
+// 	}	else if (difficulty === -1) {
+// 		// modifier = getPseudoRandomOp(seed)+1;
+// 		// modifier = getPseudoRandomInt(seed,2,30) % 4;
+// 		modifier = getPseudoRandomInt(seed,5,100) % 3 + 2;
+// 	} else {
+// 		modifier = getPseudoRandomInt(seed,2,30);
+// 	}
+// 	return modifier;
+// }
+
+function getModifier(divisor) {
+  return (getPseudoRandomInt(seed,1,200) % divisor + 2);
 }
 
 function getPseudoRandomInt(seed,min=1,max=100) {
@@ -338,7 +385,7 @@ function getPseudoRandomInt(seed,min=1,max=100) {
 	}
 
 	return result;
-};
+}
 
 // Pseudo random op based on day of month
 function getPseudoRandomOp(seed,max=4) {
