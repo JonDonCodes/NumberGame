@@ -35,9 +35,9 @@ let popup             = document.querySelector(".Popup");
 let clear_stats_pop   =document.querySelector("#Popup-clear");
 
 // Debug set to 1; Release set to 0
-let verbose           = 1
+// let verbose           = 1
 
-localStorage.clear();
+// localStorage.clear();
 
 popup.style.display = "none";
 
