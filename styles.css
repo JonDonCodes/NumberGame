@@ -1,53 +1,99 @@
 
 :root {
-	/*--main-border-color: #F66B0E;*/
-	--main-border-color: #1AA7EC;
-	/*--main-text-color: #F66B0E;*/
-	--main-text-color: #1AA7EC;
-	--main-background-color: #112B3C;
+/*	--main-dark-color: #102A49;
+  --main-light-color: #C1E1DC;*/
+
+/*  --main-dark-color: #52958B;
+  --main-light-color: #B9C4C9;*/
+/*
+  --main-dark-color: #3A5199;
+  --main-light-color: #E4E3DB;*/
+
+/*  --main-dark-color: #A0B084;
+  --main-light-color: #E4E3DB;*/
+
+/*  --main-dark-color: #882426;
+  --main-light-color: #E4E3DB;*/
+
+/*  --main-dark-color: #9F4636;
+  --main-light-color: #F1DCC9;*/
+
+/*  --main-dark-color: #6C2D2C;
+  --main-light-color: #F1DCC9;*/
+
+/*  --main-dark-color: #C1F9DC;
+  --main-light-color: #4C3F54;
+  --main-light-color: #343F54;*/
+
+/*  --main-dark-color: #6688CC;
+  --main-light-color: #C1F9DC;*/
+
+  --main-dark-color: #6688CC;
+  --main-light-color: #FAF0F2;
+}
+
+html {
+	height: 96%;
 }
 
 body {
-	background-color: #112B3C;
+  background-color: var(--main-light-color);
+  height: 96%;
 }
 
-.PlayButton {
+.Play {
 	position: absolute;
-	top: 45%;
-	bottom: 45%;
-	left: 35%;
-	right: 35%;
-	width: 30%;
-	height: 10%;
+	width: 60%;
+	height: 60%;
+	top: 20%;
+	left: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.DailyButton {
+	width: 30vw;
+	height: 12vw;
 	text-align: center;
-	font-size: 5vh;
-	background-color: var(--main-border-color);
-	color: var(--main-background-color);
+	font-size: 7vw;
+	background-color: var(--main-dark-color);
+	color: var(--main-light-color);
+	border: none;
+	border-radius: 1vw;
+	margin-bottom: 10vw;
+}
+
+.PracticeButton {
+	width: 30vw;
+	height: 12vw;
+	text-align: center;
+	font-size: 7vw;
+	background-color: var(--main-dark-color);
+	color: var(--main-light-color);
 	border: none;
 	border-radius: 1vw;
 }
 
 .GameContainer {
-	height: 100%;
+	height: 90%;
 }
 
-/*.titleContainer {
-	height: 5vh;
-	background-color: var(--main-border-color);
-	font-size: 2em;
+.titleContainer {
+	height: 7vh;
+	background-color: var(--main-dark-color);
+	color: var(--main-light-color);
+	font-size: 5vh;
 	font-family: "Trebuchet MS";
 	margin: 0 auto;
 	text-align: center;
 	width: 100%;
 	padding-top: 1vh;
-}*/
+}
 
 .Container0 {
-/*	height: 80px;*/
   height: 10vh;
-/*	border-style: solid;
-	border-width: 4px;
-	border-color: orange;*/
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -57,34 +103,26 @@ body {
 }
 
 #target {
-	/*border-style: solid;
-	border-width: 4px;*/
-	color: var(--main-text-color);
+	color: var(--main-dark-color);
 	height: 50%;
 	width: 33.3% max-content;
-	font-size: 1.8em;
+	font-size: 2em;
 	font-family: "Trebuchet MS";
 }
 
 #timer {
-/*	border-style: solid;
-	border-width: 4px;*/
-	color: var(--main-text-color);
+	color: var(--main-dark-color);
 	height: 50%;
 	width: 33.3%
 	text-align: right;
-	font-size: 1.8em;
+	font-size: 2em;
 	font-family: "Trebuchet MS";
 }
 
 
 .Container1 {
-	/*height: 150px;*/
 	height: 18vh;
 	width:  50%;
-/*	border-style: solid;
-	border-width: 4px;
-	border-color: red;*/
 	display:  grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
@@ -97,9 +135,9 @@ body {
 }
 
 .NumTile {
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
-	border-color: var(--main-border-color);
+	background-color: var(--main-dark-color);
+	color: var(--main-light-color);
+	border-color: var(--main-dark-color);
 	border-width: 3px;
 	/*font-size: 2em;*/
 	font-size: 4vh;
@@ -108,12 +146,8 @@ body {
 }
 
 .Container2 {
-	/*height: 100px;*/
 	height: 10vh;
 	width: 80%;
-/*  border-style: solid;
-	border-width: 4px;
-	border-color: green;*/
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
@@ -125,9 +159,9 @@ body {
 }
 
 .OpTile {
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
-	border-color: var(--main-border-color);
+	background-color: var(--main-dark-color);
+	color: var(--main-light-color);
+	border-color: var(--main-dark-color);
 	border-width: 3px;
 	height: 60%;
 	width: 18%;
@@ -139,12 +173,8 @@ body {
 
 
 .Container3 {
-	/*height: 200px;*/
 	height: 10vh;
 	width: 96%;
-/*  border-style: solid;
-	border-width: 4px;
-	border-color: blue;*/
 	margin: auto;
 	margin-top: 5vh;
 	margin-bottom: 5vh;
@@ -155,54 +185,46 @@ body {
 }
 
 .formulaTile {
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
-	border-color: var(--main-border-color);
+	background-color: var(--main-light-color);
+	color: var(--main-dark-color);
 	height: 60%;
 	width: 30%;
-	/*font-size: 2em;*/
-	font-size: 4vh;
-	border-style: solid;
-	border-width: 2px;
+	font-size: 7vw;
+	font-family: "Trebuchet MS";
+	border-bottom: 3px solid var(--main-dark-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 1vw;
+	border-radius: 1px;
 }
 
 .formulaTileP {
-	/*background-color: var(--main-background-color);*/
-	background-color: #112B3C;
-	color: var(--main-text-color);
-	border-color: var(--main-border-color);
+	color: var(--main-dark-color);
 	height: 60%;
 	width: 10%;
-	font-size: 3em;
+	font-size: 7vw;
+	font-family: "Trebuchet MS";
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .formulaTileOP {
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
-	border-color: var(--main-border-color);
+	background-color: var(--main-light-color);
+	color: var(--main-dark-color);
 	height: 30%;
 	width: 10%;
-	font-size: 2.5em;
-	border-style: solid;
-	border-width: 2px;
+	font-size: 7vw;
+	font-family: "Trebuchet MS";
+	border-bottom: 3px solid var(--main-dark-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 1vw;
+	border-radius: 1px;
 }
 
 .UtilPanel {
 	height: 8vh;
-/*	border-style: solid;
-	border-width: 4px;
-	border-color: orange;*/
 	width: 96%;
 	margin: auto;
 	margin-top: 5vh;
@@ -214,21 +236,21 @@ body {
 }
 
 .UtilBtn {
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
-	border-color: var(--main-border-color);
+	background-color: var(--main-dark-color);
+	color: var(--main-light-color);
+	border-color: var(--main-dark-color);
 	border-width: 3px;
-	width: 20%;
+	width: 30%;
 	/*font-size: 1.5em;*/
-	font-size: 5vw;
+	font-size: 4vh;
 	font-family: "Trebuchet MS";
 	border-radius: 1vw;
 }
 
 .YourResult {
-	color: var(--main-text-color);
+	color: var(--main-dark-color);
 	width: 60%;
-	font-size: 4vh;
+  font-size: 7vw;
 	font-family: "Trebuchet MS";
 	text-align: center;
 	height: 80%;
@@ -237,7 +259,7 @@ body {
 
 .FinalScore {
 	height: 5vh;
-	color: var(--main-text-color);
+	color: var(--main-light-color);
 	font-size: 2em;
 	font-family: "Trebuchet MS";
 	margin: 0 auto;
@@ -247,22 +269,25 @@ body {
 }
 
 .Popup {
-	width: 60%;
-	height: 50%;
+	width: 80%;
+	height: 55%;
 	position: fixed;
-	top: 25%;
-	left: 20%;
+	top: 15%;
+	left: 10%;
+	border: 5px solid var(--main-dark-color);
 	border-radius: 2vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
+	z-index: 1;
+	background-color: var(--main-dark-color);
+	box-shadow: 0 0 10px 5px #65737E;
 }
 
 #Popup-header {
 	height: 15%;
 	width: 96%;
 	margin: 0 auto;
-	margin-bottom: 7vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -275,60 +300,107 @@ body {
 	text-align: center;
 	height: 50%;
 	font-size: 4vh;
-	color: var(--main-text-color);
+	color: var(--main-light-color);
 	font-family: "Trebuchet MS";
-}
-
-#Popup-foooter {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 20vh;
-}
-
-#Popup-button {
-	width: 100%;
-	height: 50%;
-	font-size: 4vh;
-	background: none;
-	border: none;
-	color: var(--main-text-color);
-	font-family: "Trebuchet MS";
-	margin-bottom: 4vh;
-}
-
-#Popup-clear {
-	height: 50%;
-	font-size: 4vh;
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
-	border-color: var(--main-border-color);
-	border-width: 3px;
-	width: 100%;
-	/*font-size: 1.5em;*/
-	font-size: 5vw;
-	font-family: "Trebuchet MS";
-	border-radius: 1vw;
 }
 
 #Popup-body {
-	height: 85%;
-	width: 96%;
+	height: 30%;
+	width: 90%;
 	margin: 0 auto;
-	margin-bottom: 4vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#StatLabelContainer {
+	width: 65%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	align-items: center;
+	text-align: right;
+}
+
+#StatVarContainer {
+	width: 28%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	text-align: left;
 }
 
 .StatLabel {
 	width: 100%;
-	height: 15%;
-	color: var(--main-text-color);
+	color: var(--main-light-color);
   font-family: "Trebuchet MS";
   font-size: 2vh;
-  text-align: center;
+}
+
+.StatVar {
+	width: 100%;
+	color: var(--main-light-color);
+  font-family: "Trebuchet MS";
+  font-size: 2vh;
+}
+
+#Popup-footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 15vh;
+}
+
+#Popup-button {
+	height: 5vh;
+	font-size: 3vh;
+	background-color: var(--main-light-color);
+	color: var(--main-dark-color);
+	border-color: var(--main-light-color);
+	width: 80%;
+	font-family: "Trebuchet MS";
+	border-radius: 1vw;
+}
+
+#Popup-clear {
+	height: 5vh;
+	background-color: var(--main-light-color);
+	color: var(--main-dark-color);
+	border-color: var(--main-light-color);
+	width: 80%;
+  font-size: 3vh;
+	font-family: "Trebuchet MS";
+	border-radius: 1vw;
+}
+
+.CelebrationTag {
+	position: fixed;
+	top: 0%;
+	padding: 2vw;
+	width: 40%;
+	left: 27%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 3.5vh;
+	background-color: var(--main-light-color);
+	color: var(--main-dark-color);
+	border: none;
+	border-radius: 1vw;
+	animation: dropin 0.5s ease-out forwards, 
+	blink 0.7s linear 0.2s 2 forwards;
+}
+
+@keyframes dropin {
+	from {top: 0%;}
+	to {top: 16%; background: none;}
+}
+
+@keyframes blink {
+	50% {
+		opacity: 25%;
+	}
 }
 
 

@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7LL3CCNPS"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-H7LL3CCNPS');
+	</script>
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	<title>The Number Game</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<div class="titleContainer">
+	F O R M U L A
+</div>
+
 <div class="Play">
-	<button class="PlayButton">Play</button>
+	<button class="DailyButton">Daily</button>
+	<button class="PracticeButton">Practice</button>
 </div>
 
 <!-- Rounded switch -
@@ -64,7 +80,7 @@
 		<button class="UtilBtn" id="EnterBtn">Enter</button>
 	</div>
 
-	<div class="FinalScore"></div>
+	<!-- <div class="FinalScore"></div> -->
 </div>
 
 <div class="Popup">
@@ -72,15 +88,35 @@
 		<div id="Popup-title">Stats</div>
 	</div>
 	<div id="Popup-body">
-		<div class="StatLabel">   Number of Games Played: <var id="num_of_games_played"></var></div>
-        <div class="StatLabel">Number of Games Completed: <var id="num_of_games_completed"></var></div>
-        <div class="StatLabel"> Average Time to Complete: <var id="average_time"></var></div>
-        <div class="StatLabel">       Last Game Duration: <var id="last_time_to_finish"></var></div>       
+		<div id="StatLabelContainer">
+			<div class="StatLabel">
+				# of Games Played: 
+			</div>
+	        <div class="StatLabel">
+	        	# of Games Completed:
+	        </div>
+	        <div class="StatLabel">
+	        	Average Time:
+	        </div>
+	        <div class="StatLabel">
+	        	Prev Game Duration:
+	        </div>  
+        </div>  
+        <div id="StatVarContainer">
+        	<div class="StatVar" id="num_of_games_played"></div>
+        	<div class="StatVar" id="num_of_games_completed"></div>
+	    	<div class="StatVar" id="average_time"></div>
+        	<div class="StatVar" id="last_time_to_finish"></div>
+        </div>
 	</div>
     <div id="Popup-footer">
 		<button id="Popup-button">Return to Menu</button>
 		<button id="Popup-clear">Clear Stats</button>
 	</div>
+</div>
+
+<div class="CelebrationTag">
+	Great Job!
 </div>
 
 
