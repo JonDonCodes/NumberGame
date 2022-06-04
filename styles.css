@@ -41,6 +41,15 @@ body {
   height: 96%;
 }
 
+button {
+  -webkit-appearance: button;
+  cursor: pointer;
+  font: inherit;
+  overflow: visible;
+  text-transform: none;
+  padding:0;
+}
+
 .Play {
 	position: absolute;
 	width: 60%;
@@ -187,6 +196,7 @@ body {
 }
 
 .formulaTile {
+	padding: 0;
 	background-color: var(--main-light-color);
 	color: var(--main-dark-color);
 	height: 60%;
@@ -202,6 +212,7 @@ body {
 }
 
 .formulaTileP {
+	padding: 0;
 	color: var(--main-dark-color);
 	height: 60%;
 	width: 10%;
@@ -214,6 +225,7 @@ body {
 }
 
 .formulaTileOP {
+	padding: 0;
 	background-color: var(--main-light-color);
 	color: var(--main-dark-color);
 	height: 30%;
