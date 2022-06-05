@@ -88,7 +88,8 @@ dailyButton.addEventListener("click", function() {
 		startGame();
 	} else {
 		if (localStorage.getItem('lastGameCompleted') != 1) {
-
+                     removeMenu();
+                     startGame();
 		} else {
 			displayPopup();
 			removeMenu();
