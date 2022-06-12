@@ -337,7 +337,7 @@ button {
 }
 
 .HowTo {
-	width: 94%;
+	width: 92%;
 	height: 86%;
 	position: absolute;
 	top: 4%;
@@ -355,7 +355,7 @@ button {
 
 #HowTo-header {
 	height: 10%;
-	width: 100%;
+	width: 92%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
@@ -406,7 +406,7 @@ button {
 	height: 55%;
 	position: fixed;
 	top: 15%;
-	left: 9%;
+	left: 8%;
 	border: 5px solid var(--main-dark-color);
 	border-radius: 2vh;
 	display: flex;
