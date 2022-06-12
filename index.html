@@ -19,7 +19,11 @@
 <body>
 
 <div class="titleContainer">
-	F O R M U L A
+	<div id="titleStats">
+		<canvas id="can"/>
+	</div>
+	<div id="title">C A L C</div>
+	<div id="titleHowTo">?</div>
 </div>
 
 <div class="Play">
@@ -85,21 +89,23 @@
 
 <div class="Popup">
 	<div id="Popup-header">
+		<div id="Popup-header-place"></div>
 		<div id="Popup-title">Stats</div>
+		<div id="Popup-exit">&times;</div>
 	</div>
 	<div id="Popup-body">
 		<div id="StatLabelContainer">
 			<div class="StatLabel">
-				# of Games Played: 
+				Games Played:
 			</div>
 	        <div class="StatLabel">
-	        	# of Games Completed:
+	        	Games Completed:
 	        </div>
 	        <div class="StatLabel">
 	        	Average Time:
 	        </div>
 	        <div class="StatLabel">
-	        	Prev Game Duration:
+	        	Prev Game Time:
 	        </div>  
         </div>  
         <div id="StatVarContainer">
@@ -115,9 +121,22 @@
 	</div>
 </div>
 
+<div class="HowTo">
+	<div id="HowTo-header">
+		<div id="HowTo-header-place"></div>
+		<div id="HowTo-title">How to Play</div>
+		<div id="HowTo-exit">&times;</div>
+	</div>
+	<div id="HowTo-body">
+		<img src="HowToCalc.png" class="responsiveImg">
+	</div>
+</div>
+
 <div class="CelebrationTag">
 	Great Job!
 </div>
+
+<!-- <canvas id="can" width="200" height="200" /> -->
 
 
 <script src="NumberGame.js"></script>
