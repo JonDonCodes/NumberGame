@@ -355,6 +355,7 @@ button {
 
 #HowTo-header {
 	height: 10%;
+	left: 2%;
 	width: 92%;
 	margin: 0 auto;
 	display: flex;
@@ -393,6 +394,7 @@ button {
 #HowTo-body {
 	width: 96%;
 	height: 90%;
+	left: 2%;
 }
 
 .responsiveImg {
